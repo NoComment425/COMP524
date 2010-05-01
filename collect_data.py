@@ -21,10 +21,10 @@ def get_ip_range():
 
 def execute_command(cmd):
     try:
-        p = Popen(cmd, stdout=PIPE, stderr=STDOUT)
+        p = Popen(cmd, stdout=PIPE, stderr=STDOUT, shell=True)
         stdout, stderr = p.communicate(input=None)
         retcode = p.returncode
-        if retcode < 0:
+        if retcode != 0:
             print stdout, stderr, "Error: Child was terminated by signal ", retcode
             sys.exit(1)
     except Exception, e:
