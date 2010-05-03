@@ -1,4 +1,4 @@
-from PyQt4.QtCore import QTimer
+from PyQt4.QtCore import QTimer, Qt
 from PyQt4.QtGui import *
 
 ALERT_WIDTH = 350
@@ -13,6 +13,7 @@ class AlertWindow(QWidget):
         self.setFixedSize(ALERT_WIDTH, ALERT_HEIGHT)
         self.move((screen.width()-ALERT_WIDTH-10), 20)
         self.setWindowOpacity(0.8)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)
         layout = QVBoxLayout(self)
         QTimer.singleShot(10000, self.end)
         
